@@ -3,7 +3,7 @@ MAINTAINER info@analogic.cz
 
 RUN apt-get update && apt-get upgrade -y
 
-RUN apt-get install -y xorg libssl-dev libxrender-dev wget gdebi php5-cli php5-fpm nginx-light supervisor
+RUN apt-get install -y xorg libssl-dev libxrender-dev wget gdebi php5-cli php5-fpm nginx-light supervisor ttf-mscorefonts-installer ttf-xfree86-nonfree && fc-cache -f -v
 RUN wget http://download.gna.org/wkhtmltopdf/0.12/0.12.2/wkhtmltox-0.12.2_linux-trusty-amd64.deb
 RUN gdebi --n wkhtmltox-0.12.2_linux-trusty-amd64.deb && rm wkhtmltox-0.12.2_linux-trusty-amd64.deb
 RUN apt-get remove -y wget gdebi && apt-get autoremove -y && apt-get clean -y
