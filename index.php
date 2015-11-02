@@ -29,7 +29,8 @@ try {
     }
 
     header($ctype);
-    die(file_get_contents($file));
+    file_get_contents($file);
+    @unlink($file);
 
 } catch(\Exception $e) {
     header("HTTP/1.0 400 Bad request");
