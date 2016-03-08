@@ -16,7 +16,11 @@ try {
     if (!in_array($type, ['img', 'pdf'])) {
         throw new \Exception('Not valid output type');
     }
-
+    
+    if(preg_match('~^https?\%~i', $url)) {
+        // php urlencoded argument
+        $url = urldecode($url);
+    }
 
     $cmd = $type == 'img' ? '/usr/local/bin/wkhtmltoimage -f png' : '/usr/local/bin/wkhtmltopdf';
     $file = tempnam('/tmp', 'wkhtml-');
